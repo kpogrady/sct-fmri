@@ -77,7 +77,7 @@ From: ubuntu:20.04
  # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS
   mkdir /OUTPUTS
-  mkdir /workdir
+  mkdir /wkdir
   
   # Clean up unneeded packages and cache
   apt clean && apt -y autoremove
