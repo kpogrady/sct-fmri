@@ -1,0 +1,5 @@
+INPUTS
+OUTPUTS
+*.simg
+local*
+fsl-6.0.4-centos7_64.tar.gz
