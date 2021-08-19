@@ -69,7 +69,7 @@ From: ubuntu:20.04
   sctdir=/opt/sct
   git clone --branch ${sctver} --depth 1 https://github.com/${repo}/spinalcordtoolbox.git ${sctdir}
   cd ${sctdir}
-  ASK_REPORT_QUESTION=false change_default_path=Yes add_to_path=No ./install_sct
+  ./install_sct -i -y
 
   ## Add DICOM, NII, time to the SCT python
   ${sctdir}/python/envs/venv_sct/bin/pip install pydicom nilearn nitime
