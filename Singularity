@@ -99,6 +99,6 @@ From: ubuntu:20.04
 
 %runscript
 
-  xwrapper.sh "$@"
+  sct-fmri.sh "$@"
 
 

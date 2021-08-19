@@ -1,19 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+echo Running $(basename "${BASH_SOURCE}")
+
+# Copy input files to the working directory (out_dir)
+copy_files.sh
+
+# fmri processing
+process_fmri.sh
+
+# Make PDF for QA. A PDF is required for all XNAT pipelines
+
 
 # Extract first fmri volume, find centerline, make fmri space mask
 sct_image -keep-vol 0 -i fmri_fmri.nii.gz -o fmri_fmri0.nii.gz
 sct_get_centerline -c t2s -i fmri_fmri0.nii.gz
 mv fmri_fmri0_centerline.nii.gz fmri_centerline.nii.gz
 mv fmri_fmri0_centerline.csv fmri_centerline.csv
-sct_create_mask -i fmri_fmri0.nii.gz -p centerline,fmri_centerline.nii.gz -size ${MASKSIZE}mm \
--o fmri_mask${MASKSIZE}.nii.gz
+sct_create_mask -i fmri_fmri0.nii.gz -p centerline,fmri_centerline.nii.gz -size ${masksize}mm \
+-o fmri_mask${masksize}.nii.gz
 
 # Matching mffe mask for registration
-sct_create_mask -i mffe_mffe.nii.gz -p centerline,mffe_cord.nii.gz -size ${MASKSIZE}mm \
--o mffe_mask${MASKSIZE}.nii.gz
+sct_create_mask -i mffe_mffe.nii.gz -p centerline,mffe_cord.nii.gz -size ${masksize}mm \
+-o mffe_mask${masksize}.nii.gz
 
 # fMRI motion correction
-sct_fmri_moco -m fmri_mask${MASKSIZE}.nii.gz -i fmri_fmri.nii.gz 
+sct_fmri_moco -m fmri_mask${masksize}.nii.gz -i fmri_fmri.nii.gz 
 mv fmri_fmri_moco.nii.gz fmri_moco.nii.gz
 mv fmri_fmri_moco_mean.nii.gz fmri_moco_mean.nii.gz
 mv fmri_fmri_moco_params_X.nii.gz fmri_moco_params_X.nii.gz
@@ -29,7 +40,7 @@ mv fmri_moco_mean_seg.nii.gz fmri_cord.nii.gz
 sct_register_multimodal \
 -i fmri_moco_mean.nii.gz -iseg fmri_cord.nii.gz \
 -d mffe_mffe.nii.gz -dseg mffe_cord.nii.gz \
--m mffe_mask${MASKSIZE}.nii.gz \
+-m mffe_mask${masksize}.nii.gz \
 -param "${FMRI_REG_PARAM}"
 
 #-param step=1,type=seg,algo=slicereg,metric=MeanSquares,smooth=2:\
