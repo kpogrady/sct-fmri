@@ -99,6 +99,6 @@ From: ubuntu:20.04
 
 %runscript
 
-  sct-fmri.sh "$@"
+  sct-fmri_entrypoint.sh "$@"
 
 
