@@ -74,10 +74,7 @@ From: ubuntu:20.04
 
   # Add DICOM, NII, time to the SCT python
   ${sctdir}/python/envs/venv_sct/bin/pip install pydicom nilearn nitime
-  
-  # SCT conda init
-  ${sctdir}/python/condabin/conda init bash
-  
+
   # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS
   mkdir /OUTPUTS
