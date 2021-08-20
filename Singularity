@@ -91,7 +91,9 @@ From: ubuntu:20.04
 
   # SCT
   export SCTDIR=/opt/sct
-  export PATH=${SCTDIR}/bin:${PATH}
+  export PATH=${SCTDIR}/bin:${SCTDIR}/python/bin:${PATH}
+  . ${SCTDIR}/python/etc/profile.d/conda.sh
+  conda activate venv_sct
 
  # FSL
   export FSLDIR=/usr/local/fsl

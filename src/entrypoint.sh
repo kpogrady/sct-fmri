@@ -13,7 +13,7 @@ echo Running $(basename "${BASH_SOURCE}")
 
 # Initialize defaults for any input parameters where that seems useful. These
 # values will be used if a parameter is not specified on the command line.
-export masksize = 30
+export masksize=30
 export label_info="UNKNOWN SCAN"
 export out_dir=/OUTPUTS
 
@@ -47,10 +47,6 @@ do
 
     esac
 done
-
-
-# Activate the SCT python environment
-${SCTDIR}/python/condabin/conda activate venv_sct
 
 
 # Now that we have all the inputs stored in environment variables, call the
