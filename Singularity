@@ -8,7 +8,8 @@ From: ubuntu:20.04
 
 
 %setup
-  mkdir -p ${SINGULARITY_ROOTFS}/opt/{sct,sctfmri}
+  mkdir -p ${SINGULARITY_ROOTFS}/opt/sct
+  mkdir -p ${SINGULARITY_ROOTFS}/opt/sctfmri
 
   
 %files
@@ -62,7 +63,7 @@ From: ubuntu:20.04
   python2 /opt/fslinstaller.py -M -f /opt/fsl-6.0.4-centos7_64.tar.gz -d /usr/local/fsl
   rm /opt/fslinstaller.py /opt/fsl-6.0.4-centos7_64.tar.gz
 
-  ## SCT installation
+  # SCT installation
   apt-get install -y curl wget gcc git libglib2.0-0
   repo=spinalcordtoolbox
   sctver=5.3.0
@@ -71,10 +72,13 @@ From: ubuntu:20.04
   cd ${sctdir}
   ./install_sct -i -y
 
-  ## Add DICOM, NII, time to the SCT python
+  # Add DICOM, NII, time to the SCT python
   ${sctdir}/python/envs/venv_sct/bin/pip install pydicom nilearn nitime
   
- # Create a few directories to use as bind points when we run the container
+  # SCT conda init
+  ${sctdir}/python/condabin/conda init bash
+  
+  # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS
   mkdir /OUTPUTS
   mkdir /wkdir
@@ -87,6 +91,10 @@ From: ubuntu:20.04
 
   # SCT
   export PATH=/opt/sct/bin:${PATH}
+  
+  # SCT conda
+  export PATH=/opt/sct/python/condabin:$PATH
+  conda activate venv_sct
 
  # FSL
   export FSLDIR=/usr/local/fsl
