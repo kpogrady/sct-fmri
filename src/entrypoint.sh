@@ -6,7 +6,7 @@
 #
 # Example usage:
 # 
-# sct-fmri.sh --fmri_niigz /path/to/image.nii.gz
+# entrypoint.sh --fmri_niigz /path/to/image.nii.gz
 
 # This statement at the top of every bash script is helpful for debugging
 echo Running $(basename "${BASH_SOURCE}")

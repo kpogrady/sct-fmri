@@ -12,7 +12,7 @@ See `test_container.sh` for an example run command.
 
 ## Pipeline
 
-See `main.sh`.
+See `src/main.sh`.
 
 
 ## Outputs
