@@ -107,6 +107,6 @@ From: ubuntu:20.04
 
 %runscript
 
-  sct-fmri_entrypoint.sh "$@"
+  entrypoint.sh "$@"
 
 
