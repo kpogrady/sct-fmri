@@ -49,6 +49,10 @@ do
 done
 
 
+# Activate the SCT python environment
+${SCTDIR}/python/condabin/conda activate venv_sct
+
+
 # Now that we have all the inputs stored in environment variables, call the
 # main pipeline. We run it in xvfb so that we have a virtual display available.
 xvfb-run -n $(($$ + 99)) -s '-screen 0 1600x1200x24 -ac +extension GLX' \

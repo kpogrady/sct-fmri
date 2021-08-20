@@ -90,11 +90,8 @@ From: ubuntu:20.04
 %environment
 
   # SCT
-  export PATH=/opt/sct/bin:${PATH}
-  
-  # SCT conda
-  export PATH=/opt/sct/python/condabin:$PATH
-  conda activate venv_sct
+  export SCTDIR=/opt/sct
+  export PATH=${SCTDIR}/bin:${PATH}
 
  # FSL
   export FSLDIR=/usr/local/fsl
