@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
 import sys
-print('Python version:')
+
+print('Active python version:')
+print(sys.executable)
 print(sys.version_info)
+print(help('modules'))
