@@ -17,17 +17,17 @@ rdir=$subj/retroicor
 bax=/Users/kristinogrady/Documents/SpinalCordProjects/Lumbar_Cord_K01/Code/SCfMRI/baxter
 
 mkdir -p $rdir
-cp `ls $subj/orig/SCAN*.log` $rdir/func.log
-cp `ls $subj/orig/*.DCM` $rdir/func.dcm
-cp $subj/proc/*moco_params_x.nii.gz $rdir/func_moco_params_X.nii.gz
-cp $subj/proc/*moco_params_y.nii.gz $rdir/func_moco_params_Y.nii.gz
-cp $subj/proc/*moco.nii.gz $rdir/func_moco.nii.gz
-cp $subj/proc/func_csf.nii.gz $rdir/func_csf.nii.gz
-cp $subj/proc/func_notspine.nii.gz $rdir/func_notspine.nii.gz
+cp `ls $subj/orig/SCAN*.log` $rdir/fmri.log
+cp `ls $subj/orig/*.DCM` $rdir/fmri.dcm
+cp $subj/proc/*moco_params_x.nii.gz $rdir/fmri_moco_params_X.nii.gz
+cp $subj/proc/*moco_params_y.nii.gz $rdir/fmri_moco_params_Y.nii.gz
+cp $subj/proc/*moco.nii.gz $rdir/fmri_moco.nii.gz
+cp $subj/proc/fmri_csf.nii.gz $rdir/fmri_csf.nii.gz
+cp $subj/proc/fmri_notspine.nii.gz $rdir/fmri_notspine.nii.gz
 cd $rdir
 
 #496Hz is sampling rate of 3T-A and 3T-B, hard coded, for physio data
-$mypy ${bax}/retroicor/parse_physlog.py func.log 496 func.dcm
+$mypy ${bax}/retroicor/parse_physlog.py fmri.log 496 fmri.dcm
 
 $mypy ${bax}/afni/RetroTS.py \
 -r physlog_respiratory.csv \
@@ -39,6 +39,6 @@ $mypy ${bax}/retroicor/cleanup_physlog.py
 
 $mypy ${bax}/retroicor/regress.py
 
-mv ffunc_moco.nii.gz ../proc/func_rc.nii.gz
+mv ffmri_moco.nii.gz ../proc/fmri_rc.nii.gz
 mv vat.txt ../proc/
 rm *dcm *log *nii.gz
