@@ -13,7 +13,7 @@ echo Running $(basename "${BASH_SOURCE}")
 
 # Initialize defaults for any input parameters where that seems useful. These
 # values will be used if a parameter is not specified on the command line.
-export masksize=30
+export masksize=35
 export label_info="UNKNOWN SCAN"
 export out_dir=/OUTPUTS
 
