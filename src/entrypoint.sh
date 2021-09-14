@@ -28,6 +28,10 @@ do
             # is expected to be the fully qualified path and filename.
             export fmri_niigz="$2"; shift; shift ;;
 
+        --fmri_dcm)
+            # We need the fMRI DICOM as well, for physlog info
+            export fmri_dcm="$2"; shift; shift ;;
+
         --masksize)
             # Size in mm of the fmri mask to create
             export masksize="$2"; shift; shift ;;

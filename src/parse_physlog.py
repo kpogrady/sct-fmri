@@ -1,4 +1,4 @@
-#!/Users/combesa/spinalcordtoolbox/python/envs/venv_sct/bin/python
+#!/usr/bin/env python
 #
 # Load a Philips scan physlog file, trim to the exact scan time, and split into separate 
 # cardiac and respiratory signals. Save to AFNI .1D format. 

@@ -97,8 +97,8 @@ From: ubuntu:20.04
   . ${FSLDIR}/etc/fslconf/fsl.sh
   export PATH=${FSLDIR}/bin:${PATH}  
   
-  # Pipeline
-  export PATH=/opt/sctfmri/src:${PATH}
+  # Pipeline, including AFNI bits
+  export PATH=/opt/sctfmri/src:/opt/sctfmri/src/external/afni:${PATH}
 
 
 %runscript

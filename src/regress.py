@@ -1,4 +1,4 @@
-#!/opt/sct/python/envs/venv_sct/bin/python
+#!/usr/bin/env python
 #
 # Generate confound regressors and remove, slice by slice
 
