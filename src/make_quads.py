@@ -1,4 +1,4 @@
-#!/opt/sct/python/envs/venv_sct/bin/python
+#!/usr/bin/env python
 #
 # Load fmri space masks and create dorsal and ventral ROIs
 

@@ -1,4 +1,4 @@
-#!/opt/sct/python/envs/venv_sct/bin/python
+#!/usr/bin/env python
 # 
 # Get RetroTS output into friendly csv format
 
